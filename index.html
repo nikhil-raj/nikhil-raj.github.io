@@ -1,32 +1,144 @@
 <html>
-
-
-<head>
-<link rel="stylesheet" type="text/css" href="map_style.css">
-
-<script src="http://www.google.com/jsapi?key=AIzaSyBOVIOzQt5xIsJQhqgFNyxchXR862BdqZs"></script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-<script src="map.js" type="text/javascript"></script>
-<h1><center> Find Atms at your current location (X)</center></h1>
-</head>
-
-
-
-<body id="bod">
-
+	<head>
+		<title>Happy Birthday</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+		<style>
+			body{
+			margin: 0;
+                        background:#000000;
+			}
+			#myVideo {
+			  position: fixed;
+                          left:0;
+			  right: 0;
+                          top:0;
+			  bottom: 0;
+			  max-width: 100%; 
+			  min-height: 100%;
+			}
+			#background
+			{
+			width:100%;
+			height:100%;
+			background:
+			}
+			#content
+			{
+			position:absolute;
+			top:40%;
+			left:50%;
+			transform: translate(-50%,-50%);
+			font-family: 'Lobster', cursive;
+			color:white;
+			font-size:5em;
+			text-align:center;
+			text-transform:capitalize;
+			}
+			button{
+			background:none;
+			border:solid 1px #fff;
+			border-radius:5px;
+			font-family: 'Lobster', cursive;
+			padding:15px;
+			font-size:15px;
+			color:#fff;
+			}
+			.small{
+			padding:7px;
+                        margin-top:3px;
+			}
+			#footer{
+                        
+			position:absolute;
+                        width:70%;
+			bottom:10px;
+			left:50%;
+			transform:translate(-50%);
+			background:none;
+			font-family: 'Lobster', cursive;
+			color:#fff;
+                        text-align:center;
+			}
+                        #otherFooter{
+			position:absolute;
+			bottom:10px;
+                        width:70%;
+			left:50%;
+			transform:translate(-50%);
+			background:none;
+			font-family: 'Lobster', cursive;
+			color:#fff;
+                        text-align:center;
+			}
+			input{
+			background:none;
+			border:solid 1px white;
+			border-radius:5px;
+			padding:8px;
+			color:white;
+			
+			}
+			.credit{float:left;font-size:12px;width:49%;}
+                        .credit a{color:#fff;text-decoration:none;}
+                        .credit2{float:right;font-size:12px;width:49%;}
+		</style>
 		
-		<div role="main">
-			<section id="main-content">
-				<div id="map"></div>
-				
-				
-						
-			</section>
-		</div>
-
-</body>
-
-
-
-
+	</head>
+	<body>
+	<video id="myVideo" controls preload="auto">
+	  <source src="kjd.mp4" type="video/mp4"/>
+	  Your browser does not support HTML5 video.
+	</video>
+	<div id="content">
+	<span id="inner">Wish someone birthday</span>
+	<br/>
+	<button onclick="playVideo()">See</button>
+	</div>
+	<div id="footer">
+	<input id="name" placeholder="Your Name" type="text" style="width:48%"/>
+        <input id="othername" placeholder="Person to wish" type="text" style="width:48%"/>
+	<button class="small" onclick="share()">Share</button>
+	<br/>
+        
+	<span class="credit">Made with &#9825; by Nikhil</span><span class="credit"> 
+        <a href="http://freemusicarchive.org/music/James_Cobb/The_New_Birthday_Song_Contest/The_Birthday_Song_1002">Audio: James Cobb</a></span>
+	</div>
+        <div id="otherFooter" style="display:none;"><button class="small" onclick="load()">Wish someone birthday</button><br>
+        <span class="credit">Made with &#9825; by Nikhil</span><span class="credit"><a href="http://freemusicarchive.org/music/James_Cobb/The_New_Birthday_Song_Contest/The_Birthday_Song_1002">Audio: James Cobb</a></span></div>
+        <script>
+        
+		var url=window.location.href;
+                var c= document.getElementById("myVideo");
+		
+                c.controls=false;
+		if(url.indexOf("?")>-1)
+		{
+		var arr=url.split("?");
+		document.getElementById("inner").innerHTML=arr[2]+",<br>"+arr[1]+" Wishes You";
+                document.getElementById("footer").style.display="none";
+                document.getElementById("otherFooter").style.display="block";
+		}
+		function playVideo(){
+		var c= document.getElementById("myVideo");
+		c.play();
+		document.getElementById("content").style.display="none";
+		}
+                function load(){
+                window.location.href="http://myhappybirthday.atwebpages.com";
+                }
+		function share(){
+                
+		var name=document.getElementById("name").value;
+                var othername=document.getElementById("othername").value;
+                if(name=="" || othername==""){
+                return
+                }
+		window.location.href = "whatsapp://send?text="+name+"%20wants%20to%20say%20something%0A%0Ahttp%3A%2F%2Fmyhappybirthday.atwebpages.com%3F"+name+"%3F"+othername;
+		}
+                var c= document.getElementById("myVideo");
+                //c.controls=false;
+	</script>
+	</body>
+	
 </html>
