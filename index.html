@@ -110,8 +110,8 @@
         
 		var url=window.location.href;
                 var c= document.getElementById("myVideo");
-		
-                c.controls=false;
+		setTimeout(function(){ c.controls=false; }, 300);
+                
 		if(url.indexOf("?")>-1)
 		{
 		var arr=url.split("?");
